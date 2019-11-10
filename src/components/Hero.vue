@@ -43,22 +43,30 @@ export default {
     margin: 0;
     position: absolute;
     top: 0;
-    font-size: 16rem;
+    font-size: 10rem;
     color: white;
     text-shadow: 4px 4px #00000045;
+    @media only screen and (min-width: 600px) {
+        font-size: 16rem;
+    }
+
 }
 .coming {
+    display: none;
     position: absolute;
     bottom: 0;
-    transform: translateY(100%);
-    transition: transform 1s ease;
+    opacity: 0;
+    transition: opacity 1s ease;
     left: 0;
     background-color: white;
     width: 100%;
     text-align: center;
     padding: .5rem 0;
     &Up {
-        transform: translateY(0);
+        opacity: 1;
+    }
+    @media only screen and (min-width: 600px){
+        display: block;
     }
 }
 </style>
