@@ -9,13 +9,19 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/', component: Home
+    path: '/',
+    name: 'home',
+    component: Home
   },
   {
-    path: '/blogs', component: Blogs
+    path: '/blogs',
+    name: 'blogs',
+    component: Blogs
   },
   {
-    path: '/blog', component: Blog
+    path: '/blog/:title', 
+    name: 'blog',
+    component: Blog
   }
 ];
 

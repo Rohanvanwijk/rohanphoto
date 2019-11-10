@@ -1,6 +1,6 @@
 <template>
     <div class="blog container">
-        <h1 class="blog__title">{{ pageTitle }}t Koningshof</h1>
+        <h1 class="blog__title">{{ $route.params.title }}</h1>
         <div class="blog__intro">{{ intro }} Vandaag wezen fotograferen in het bos genaam t Konings hof.</div>
         <div class="blog__photos">
             <img v-for="photo in images" v-bind:key="photo" :src="photo" alt="photo" />

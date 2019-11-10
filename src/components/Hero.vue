@@ -1,8 +1,7 @@
 <template>
     <div class="hero">
         <h1 class="page-title" @mouseenter="showSlogan">{{ HeroTitle }}</h1>
-        <a href="/blog" class="enter-website">Enter website</a>
-        
+        <router-link to="/blogs" class="enter-website">Enter website</router-link>
         <img src="../assets/banner.jpg" alt="Image" class="img"/>
         <MetaData />
     </div>
