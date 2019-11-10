@@ -1,7 +1,8 @@
 <template>
     <div class="hero">
         <h1 class="page-title" @mouseenter="showSlogan">{{ HeroTitle }}</h1>
-        <div class="coming" :class="{ comingUp: showedSlogan }">More coming soon...</div>
+        <a href="/blog" class="enter-website">Enter website</a>
+        
         <img src="../assets/banner.jpg" alt="Image" class="img"/>
         <MetaData />
     </div>
@@ -68,5 +69,19 @@ export default {
     @media only screen and (min-width: 600px){
         display: block;
     }
+}
+.enter-website {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: black;
+    padding: .5rem;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+        box-shadow: 4px 0px 10px white;
+    }
+
 }
 </style>

@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <Hero HeroTitle="Rohan Photo" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hero from './components/Hero.vue'
 
 export default {
   name: 'app',
-  components: {
-    Hero
-  }
 }
 </script>
 
@@ -28,5 +24,10 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
 }
 </style>
