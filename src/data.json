@@ -1,0 +1,29 @@
+[
+{
+    "title": "t Koningshof",
+    "intro": "Vandaag naar het Koningshof (Overveen) geweest. Hieronder het resultaat. Prachtig die herfst kleuren! Het was bewolkt, maar gelukkig regende het niet!",
+    "date": "November 2019",
+    "images": [
+        {
+            "full": true,
+            "src": [
+                "../assets/images/koningshof/tkoningshof-3.jpg",
+                "sdfsdf"
+            ]
+        }
+    ]
+},
+{
+    "title": "Dummy",
+    "intro": "Dit is een dummy tekst introdu.",
+    "date": "July 2303",
+    "images": [
+        {
+            "full": true,
+            "src": [
+                "https://placeimg.com/640/480/nature"
+            ]
+        }
+    ]
+}
+]

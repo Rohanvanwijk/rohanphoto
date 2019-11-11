@@ -1,8 +1,8 @@
 <template>
     <div class="hero">
-        <h1 class="page-title" @mouseenter="showSlogan">{{ HeroTitle }}</h1>
+        <h1 class="page-title">{{ HeroTitle }}</h1>
         <router-link to="/blogs" class="enter-website">Enter website</router-link>
-        <img src="../assets/banner.jpg" alt="Image" class="img"/>
+        <img src="../assets/out.jpg" alt="Image" class="img"/>
         <MetaData />
     </div>
 </template>
@@ -17,16 +17,6 @@ export default {
     props: {
         HeroTitle: String
     },
-    data: function() {
-        return {
-            showedSlogan: false,
-        }
-    },
-    methods: {
-        showSlogan: function() {
-            this.showedSlogan = true;
-        },
-    }
 }
 </script>
 <style lang="scss" scoped>

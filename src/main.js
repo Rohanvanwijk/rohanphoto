@@ -4,6 +4,7 @@ import App from './App.vue'
 import Blog from './components/Blog.vue'
 import Blogs from './components/Blogs.vue'
 import Home from './components/Home.vue'
+import Store from './store/index.js'
 
 Vue.use(VueRouter);
 
@@ -19,7 +20,7 @@ const routes = [
     component: Blogs
   },
   {
-    path: '/blog/:item', 
+    path: '/blog/:title', 
     name: 'blog',
     component: Blog,
     props: true
@@ -34,6 +35,7 @@ const router = new VueRouter({
 Vue.config.productionTip = false
 
 new Vue({
+  store: Store,
   router,
   render: h => h(App),
 }).$mount('#app')
