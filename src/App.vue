@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  max-width: 120rem;
+  max-width: 99rem;
   margin: 0 auto;
 }
 </style>
