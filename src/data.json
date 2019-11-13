@@ -122,19 +122,5 @@
             ]
         }
     ]
-},
-{
-    "title": "test",
-    "intro":"Een dag in Parijs met familie. Geschoten met Canon EOS 400D (2006) en 18-55mm lens.",
-    "date":"Augustus 2019",
-    "images": [
-        {
-            "full": true,
-            "src": [
-                "disneylandparijs/disneyparijs-8.jpg",
-                "disneylandparijs/disneyparijs-6.jpg"
-            ]
-        }
-    ]
 }
 ]
