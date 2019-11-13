@@ -5,23 +5,33 @@
     "date": "November 2019",
     "images": [
         {
-            "full": true,
+            "full": false,
             "src": [
-                "../assets/images/koningshof/tkoningshof-3.jpg",
-                "sdfsdf"
+                "koningshof/tkoningshof-3.jpg",
+                "koningshof/tkoningshof-13.jpg"
             ]
-        }
-    ]
-},
-{
-    "title": "Dummy",
-    "intro": "Dit is een dummy tekst introdu.",
-    "date": "July 2303",
-    "images": [
+        },
         {
             "full": true,
             "src": [
-                "https://placeimg.com/640/480/nature"
+                "koningshof/tkoningshof-1.jpg",
+                "koningshof/tkoningshof-11.jpg",
+                "koningshof/tkoningshof-20.jpg"
+            ]
+        },
+        {
+            "full": false,
+            "src": [
+                "koningshof/tkoningshof-7.jpg",
+                "koningshof/tkoningshof-18.jpg"
+            ]
+        },
+        {
+            "full": true,
+            "src": [
+                "koningshof/tkoningshof-27.jpg",
+                "koningshof/tkoningshof-28.jpg",
+                "koningshof/tkoningshof-30.jpg"
             ]
         }
     ]

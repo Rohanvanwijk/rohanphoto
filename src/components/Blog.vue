@@ -7,63 +7,32 @@
             <div v-for="photo in blog.images" :key="photo.title" class="img-container">
                 <div v-if="photo.full" class="img img--full">
                     <div v-for="source in photo.src" :key="source" class="img--full__item">
-                        <img :src="source" alt="full" />
+                        <img :src="getPath(source)" alt="img full" />
                     </div>
                 </div>
                 <div v-else class="img img--half">
                     <div v-for="source in photo.src" :key="source" class="img--half__item">
-                        <img :src="source" alt="half" />
+                        <img :src="getPath(source)" alt="half" />
                     </div>
                 </div>
-              
             </div>
         </div>
     </div>
-    
 </template>
 <script>
 
-
 export default {
     name: 'Blog',
-    data: function() {
-        return {
-            test: [
-            require('../assets/images/koningshof/tkoningshof-3.jpg')
-        ]
-        }
-    },
     computed: {
         blog () {
             const title = this.$route.params.title;
-            var oldBlog = this.$store.getters.getBlogByTitle(title);
-
-            
-
-            for (var blog in oldBlog) {
-            
-                for(var img in blog.images){
-
-                    for(var src in img.src){
-                        src = require(src);
-                        alert(src);
-                    }
-
-                   
-                }
-            }
-
-
-
-     
-            return oldBlog;
+            var blog = this.$store.getters.getBlogByTitle(title);
+            return blog;
         },
     },
     methods: {
-        getPath: function(path) {
-            const img =require(path);
-            alert(img);
-            return img;
+        getPath: function(pic) {
+            return require('@/assets/images/' + pic)
         }
     }
 }
