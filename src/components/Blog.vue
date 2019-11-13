@@ -1,6 +1,7 @@
 <template>
     <div class="blog container">
-        <div class="scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
+        <div class="floating scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
+        <router-link to="/blogs" class="backpage">Back to blogs</router-link>
         <h1 class="blog__title">{{ blog.title }}</h1>
         <div class="blog__date">{{ blog.date }}</div>
         <div class="blog__intro">{{ blog.intro }}</div>
@@ -109,17 +110,30 @@ export default {
         margin: 0 1rem;
     }
 }
-.scrollup {
+.floating {
     opacity: 0;
     transition: opacity 1s;
     position: fixed;
     padding: 2rem;
-    bottom: 2rem;
-    right: 2rem;
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 1px 1px 3px black;
     background-color: white;
+}
+.scrollup {
+    bottom: 2rem;
+    right: 2rem;
+}
+.backpage {
+    position: fixed;
+    cursor: pointer;
+    bottom: 2rem;
+    left: 2rem;
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+    &:hover {
+        color: black;
+    }
 }
 .show {
     opacity: 1;
