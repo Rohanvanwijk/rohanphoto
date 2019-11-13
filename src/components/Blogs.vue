@@ -44,13 +44,13 @@ export default {
   }
   &__item {
     flex-basis: 25%;
-    margin: 0;
+    margin: 0 0 2rem 0;
     position: relative;
     overflow: hidden;
     max-height: 20rem;
     @media only screen and (min-width: 900px) {
       flex-direction: row;
-      margin: 0 2rem;
+      margin: 0 2rem 2rem 2rem;
     }
     img {
       width: 100%;
