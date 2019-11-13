@@ -3,7 +3,7 @@
     <h1>My photographs</h1>
     <div class="blogs__container">
       <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
-        <img :src="getPath(blog.images[0].src[0])" alt="photo" />
+        <img :src="getPath(blog.images[0].src[1])" alt="photo" />
         <router-link
           :to="{ name: 'blog', params: { title: blog.title } }"
           class="blog-link"
