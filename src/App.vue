@@ -13,7 +13,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+//variables
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-xl: 992px;
+$screen-lg: 1200px;
+
 html {
   font-size: 62.5%;
   margin: 0;
@@ -31,6 +37,11 @@ body {
 .container {
   max-width: 99rem;
   margin: 0 auto;
+  padding: 0 2rem;
+  @media only screen and (min-width: $screen-xl) {
+    padding: 0;
+    
+  }
 }
 
 .router-anim-enter-active {

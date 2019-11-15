@@ -1,6 +1,6 @@
 <template>
   <div class="blogs container">
-    <h1>My photographs</h1>
+    <h1 class="blogs__title">My photographs</h1>
     <div class="blogs__container">
       <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
         <img :src="getPath(blog.images[0].src[1])" alt="photo" />
@@ -9,6 +9,7 @@
           class="blog-link"
           pageTitle="blog.title"
         >{{ blog.title }}</router-link>
+        <span class="blogs__date">{{ blog.date }}</span>
       </div>
     </div>
   </div>
@@ -26,31 +27,49 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scroped>
+//variables
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-xl: 992px;
+$screen-lg: 1200px;
+
 .blogs {
   padding: 0 1rem;
-  @media only screen and (min-width: 900px) {
+  margin-top: 8rem;
+  @media only screen and (min-width: $screen-md) {
     padding: 0;
   }
+  &__title {
+    margin-bottom: 4rem;
+    font-variant: small-caps;
+    text-align: center;
+  }
+  &__date {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 1rem;
+  }
   &__container {
-    margin: 0 -2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     flex-direction: column;
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
   }
   &__item {
     flex-basis: 25%;
-    margin: 0 0 2rem 0;
     position: relative;
     overflow: hidden;
     max-height: 20rem;
-    @media only screen and (min-width: 900px) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    @media only screen and (min-width: $screen-md) {
       flex-direction: row;
-      margin: 0 2rem 2rem 2rem;
     }
     img {
       width: 100%;

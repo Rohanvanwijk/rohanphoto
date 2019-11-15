@@ -71,6 +71,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+img {
+    width: 100%;
+}
 .blog {
     padding: 0 1rem;
     @media only screen and (min-width: 900px) {
@@ -91,24 +94,27 @@ export default {
     &__intro {
         margin-bottom: 2rem;
     }
-    &__photos {
-        img {
-            width: 100%;
-        }
-    }
 }
 
 .img {
     cursor: pointer;
+    margin: 1rem 0;
 }
+.img--full__item {
+    margin: 1rem 0;
+}
+
 
 .img--half {
     display: flex;
     justify-content: space-between;
-    margin: 0 -1rem;
+    margin: 1rem -1rem;
     &__item {
         margin: 0 1rem;
     }
+}
+.mt-2 {
+    margin: 2rem 0;
 }
 .floating {
     opacity: 0;
