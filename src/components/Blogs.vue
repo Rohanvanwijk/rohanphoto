@@ -53,21 +53,25 @@ $screen-lg: 1200px;
   }
   &__container {
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: space-evenly;
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
   }
   &__item {
-    flex-basis: 25%;
+    flex-basis: 33.33%;
     position: relative;
     overflow: hidden;
+    margin-right: 1rem;
     max-height: 20rem;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    &:nth-child(even) {
+      margin-right: 0;
+    }
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
