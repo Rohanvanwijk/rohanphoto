@@ -1,4 +1,55 @@
 [
+    {
+        "title": "Amsterdam",
+        "intro": "Een dag in Amsterdam. Geschoten met Canon 5D mark IV + Canon 16-35mm f4L IS.",
+        "date": "November 2019",
+        "images": [
+            {
+                "full": false,
+                "src":[
+                    "amsterdam/ams-1.jpg",
+                    "amsterdam/ams-2.jpg"
+                ]
+            },
+            {
+                "full": true,
+                "src": [
+                    "amsterdam/ams-3.jpg"
+                ]
+            },
+            {
+                "full": true,
+                "src": [
+                    "amsterdam/ams-4.jpg"
+                ]
+            },
+            {
+                "full": false,
+                "src": [
+                    "amsterdam/ams-5.jpg",
+                    "amsterdam/ams-6.jpg"
+                ]
+            },
+            {
+                "full": true,
+                "src": [
+                    "amsterdam/ams-7.jpg"
+                ]
+            },
+            {
+                "full": true,
+                "src": [
+                    "amsterdam/ams-8.jpg"
+                ]
+            },
+            {
+                "full": true,
+                "src": [
+                    "amsterdam/ams-9.jpg"
+                ]
+            }
+        ]
+    },
 {
     "title": "t Koningshof",
     "intro": "Vandaag naar het Koningshof (Overveen) geweest. Hieronder het resultaat. Prachtig die herfst kleuren! Het was bewolkt, maar gelukkig regende het niet!",

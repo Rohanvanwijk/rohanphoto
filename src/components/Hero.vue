@@ -63,6 +63,7 @@ export default {
     position: absolute;
     left: 50%;
     top: 50%;
+    transform: translateX(-50%) translateY(-50%);
     background-color: black;
     padding: .5rem;
     color: white;
