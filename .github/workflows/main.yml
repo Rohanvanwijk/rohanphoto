@@ -13,11 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install lftp
-      run: apt install lftp
+      run: sudo apt install lftp
     - name: Install Dependencies
       run: npm install
     - name: Build the app
       run: |
         npm run build
-        echo hoi
+        lftp --help
         
