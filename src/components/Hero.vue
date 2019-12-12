@@ -1,13 +1,15 @@
 <template>
     <div class="hero">
         <h1 class="page-title">{{ HeroTitle }}</h1>
+        <h2>{{ feature[0].title }}</h2>
         <router-link to="/blogs" class="enter-website">Enter website</router-link>
-        <img src="../assets/out.jpg" alt="Image" class="img"/>
+        <img src="../assets/images/showcase/forest.jpg" alt="Image" class="img"/>
         <MetaData />
     </div>
 </template>
 <script>
-import MetaData from './MetaData.vue'
+import MetaData from './MetaData.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Hero',
@@ -17,6 +19,7 @@ export default {
     props: {
         HeroTitle: String
     },
+    computed: mapGetters(['feature']),
 }
 </script>
 <style lang="scss" scoped>
