@@ -19,5 +19,8 @@ jobs:
     - name: Build the app
       run: npm run build
     - name: Deploy app to rohanphoto
-      run: lftp -c "set ftp:ssl-allow no; open -u $ftp_user,$ftp_password $ftp_host; mirror -Rev dist/ ./public_html/rohanphoto  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+      run: |
+        ls 
+        pwd
+        lftp -c "set ftp:ssl-allow no; open -u $ftp_user,$ftp_password $ftp_host; mirror -Rev dist/ ./public_html/rohanphoto  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
         
