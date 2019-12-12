@@ -2,7 +2,7 @@
     <div class="hero">
         <h1 class="page-title">{{ HeroTitle }}</h1>
         <router-link to="/blogs" class="enter-website">Enter website</router-link>
-        <img src="../assets/out.jpg" alt="Image" class="img"/>
+        <img :src="heroImage" alt="Hero image" class="img"/>
         <MetaData />
     </div>
 </template>
@@ -17,6 +17,11 @@ export default {
     props: {
         HeroTitle: String
     },
+    computed: {
+        heroImage: function() {
+            return require('../assets/hero.jpg');
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

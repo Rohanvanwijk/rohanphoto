@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         getPath: function(pic) {
-            return require('@/assets/images/' + pic)
+            return `https://docs.google.com/uc?id=${pic}`;
         },
         scrollToTop: function() {
             window.scrollTo({

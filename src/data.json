@@ -1,56 +1,6 @@
 [
-    {
-        "title": "Amsterdam",
-        "intro": "Een dag in Amsterdam. Geschoten met Canon 5D mark IV + Canon 16-35mm f4L IS.",
-        "date": "November 2019",
-        "images": [
-            {
-                "full": false,
-                "src":[
-                    "amsterdam/ams-1.jpg",
-                    "amsterdam/ams-2.jpg"
-                ]
-            },
-            {
-                "full": true,
-                "src": [
-                    "amsterdam/ams-3.jpg"
-                ]
-            },
-            {
-                "full": true,
-                "src": [
-                    "amsterdam/ams-4.jpg"
-                ]
-            },
-            {
-                "full": false,
-                "src": [
-                    "amsterdam/ams-5.jpg",
-                    "amsterdam/ams-6.jpg"
-                ]
-            },
-            {
-                "full": true,
-                "src": [
-                    "amsterdam/ams-7.jpg"
-                ]
-            },
-            {
-                "full": true,
-                "src": [
-                    "amsterdam/ams-8.jpg"
-                ]
-            },
-            {
-                "full": true,
-                "src": [
-                    "amsterdam/ams-9.jpg"
-                ]
-            }
-        ]
-    },
 {
+    "G_URL_LINK": "https://docs.google.com/uc?id=FILE-ID",
     "title": "t Koningshof",
     "intro": "Vandaag naar het Koningshof (Overveen) geweest. Hieronder het resultaat. Prachtig die herfst kleuren! Het was bewolkt, maar gelukkig regende het niet!",
     "date": "November 2019",
@@ -58,118 +8,31 @@
         {
             "full": false,
             "src": [
-                "koningshof/tkoningshof-3.jpg",
-                "koningshof/tkoningshof-13.jpg"
+                "1aef7FAiDKT_CC_gKUXMPJQmbG-hdL938",
+                "1vBI1uqty6Luszr8srSZHp8djIhyLxwT5"
             ]
         },
         {
             "full": true,
             "src": [
-                "koningshof/tkoningshof-1.jpg",
-                "koningshof/tkoningshof-11.jpg",
-                "koningshof/tkoningshof-20.jpg"
+                "1aPtCmIdaTPgVFpsz54IeMXQ1MK9Kmgim",
+                "1I2dMMsT3P1ADFDyL4Njfll792gwafpPL",
+                "1RgwLCzJCh6XZ_JsrKTVUHqviLUjp5RjE"
             ]
         },
         {
             "full": false,
             "src": [
-                "koningshof/tkoningshof-7.jpg",
-                "koningshof/tkoningshof-18.jpg"
+                "1ytVkrZ-vsgRtoNGWmdEb3Fx6MDRyx5cS",
+                "1dM43Z-S_zpFDeQXQtPlJHBiNuynKPUiv"
             ]
         },
         {
             "full": true,
             "src": [
-                "koningshof/tkoningshof-27.jpg",
-                "koningshof/tkoningshof-28.jpg",
-                "koningshof/tkoningshof-30.jpg"
-            ]
-        }
-    ]
-},
-{
-    "title": "Stedentrip Parijs",
-    "intro": "Een dag in Parijs met familie. Geschoten met Canon EOS 400D (2006) en 18-55mm lens.",
-    "date": "Augustus 2019",
-    "images": [
-        {
-            "full": true,
-            "src": [
-                "parijs2019/parijs-1.jpg",
-                "parijs2019/parijs-2.jpg"
-            ]
-
-        },
-        {
-            "full": false,
-            "src":[
-                "parijs2019/parijs-3.jpg",
-                "parijs2019/parijs-4.jpg"
-            ]
-        },
-        {
-            "full": true,
-            "src":[
-                "parijs2019/parijs-5.jpg",
-                "parijs2019/parijs-6.jpg"
-            ]
-        },
-        {
-            "full": false,
-            "src":[
-                "parijs2019/parijs-7.jpg",
-                "parijs2019/parijs-8.jpg"
-            ]
-        },
-        {
-            "full": false,
-            "src":[
-                "parijs2019/parijs-9.jpg",
-                "parijs2019/parijs-10.jpg"
-            ]
-        },
-        {
-            "full": true,
-            "src":[
-                "parijs2019/parijs-11.jpg"
-            ]
-        },
-        {
-            "full": false,
-            "src":[
-                "parijs2019/parijs-12.jpg",
-                "parijs2019/parijs-13.jpg"
-            ]
-        },
-        {
-            "full": false,
-            "src":[
-                "parijs2019/parijs-14.jpg",
-                "parijs2019/parijs-15.jpg"
-            ]
-        }
-    ]
-},
-{
-    "title": "Disneyland Parijs",
-    "intro": "Twee daagse Disneyland Parijs met familie. Gemaakt met Canon EOS 400D (2006) en 18-55mm lens.",
-    "date":"Augustus 2019",
-    "images": [
-        {
-            "full": false,
-            "src": [
-                "disneylandparijs/disneyparijs-2.jpg",
-                "disneylandparijs/disneyparijs-4.jpg"
-            ]
-        },
-        {
-            "full": true,
-            "src": [
-                "disneylandparijs/disneyparijs-3.jpg",
-                "disneylandparijs/disneyparijs-5.jpg",
-                "disneylandparijs/disneyparijs-6.jpg",
-                "disneylandparijs/disneyparijs-7.jpg",
-                "disneylandparijs/disneyparijs-8.jpg"
+                "1qjTSoCqRgL2C3JUyUi9gsdkJCPxP8q2u",
+                "1zdvEbePQrjqaejGL4rLpN-xxnvK4AFzU",
+                "1p6Pr2Vg6FyCn0KhJdG3wMycwWh6vOBER"
             ]
         }
     ]
