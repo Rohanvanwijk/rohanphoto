@@ -31,7 +31,7 @@ export default {
     data: function() {
         return {
             isShowedUp: false,
-            showFullSrc: 'koek'
+            showFullSrc: ''
         }
     },
     computed: {
