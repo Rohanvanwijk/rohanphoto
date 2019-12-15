@@ -26,5 +26,5 @@ jobs:
       run: |
         lftp -c "set ftp:ssl-allow no; \
         open -u $user,$password $host; \
-        mirror -Rev dist/ ./public_html/rohanphoto  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+        mirror --reverse --verbose --delete dist/ ./public_html/rohanphoto  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/; bye"
         
