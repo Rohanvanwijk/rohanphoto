@@ -23,8 +23,4 @@ jobs:
         host: ${{ secrets.ftp_host }}
         user: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
-      run: |
-        lftp -c "set ftp:ssl-allow no; \
-        open -u $user,$password $host; \
-        mirror --reverse --verbose --delete dist/ ./public_html/rohanphoto  --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/; bye"
-        
+      run: lftp -e "open $host; user $user $password; mirror -X .* -X .*/ --reverse --verbose --delete dist/ ./public_html/rohanphoto; bye"
