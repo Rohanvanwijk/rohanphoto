@@ -88,10 +88,7 @@ export default {
             var app = document.querySelector('#app');
             app.style.position = 'fixed';
          
-            console.log(`viewport: ${viewPortWidth} , ${viewPortHeight}`)
-            console.log(`img: ${imgWidth}, ${imgHeight}`);
             if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
-                console.log('img is groter dan view port!');
                 imgModal.style.width = 'unset';
                 imgModal.style.height = '100%';
             }
@@ -102,7 +99,7 @@ export default {
             }
             var modal = document.querySelector('.modal');
             var app = document.querySelector('#app');
-            modal.style.display = 'none';
+            modal.removeAttribute('style');
             app.removeAttribute('style');
             window.scrollTo(0, this.currentPos);
         }
@@ -132,7 +129,7 @@ export default {
     }
     &-info {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;            
         p {
             margin: 1rem;
