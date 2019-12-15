@@ -20,7 +20,10 @@
             </div>
         </div>
         <div class="modal" @click="DismisModal($event)">
-            <img class="modal-image" :src="showFullSrc" alt="modal">
+            <img class="modal-image" :src="showFullSrc" alt="modalimage">
+            <div class="modal-info">
+                <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
+            </div>
         </div>
     </div>
 </template>
@@ -31,7 +34,10 @@ export default {
     data: function() {
         return {
             isShowedUp: false,
-            showFullSrc: ''
+            showFullSrc: '',
+            currentPos: 0,
+            imgWidth: 0,
+            imgHeight: 0
         }
     },
     computed: {
@@ -54,6 +60,7 @@ export default {
         },
         handleScroll: function() {
             const x = window.scrollY;
+            this.currentPos = x;
             if(x > 600){
                 this.isShowedUp = true;
             } else {
@@ -67,7 +74,10 @@ export default {
             var viewPortHeight = window.innerHeight;
             var imgWidth = event.path[0].clientWidth;
             var imgHeight = event.path[0].clientHeight;
-            
+
+            this.imgWidth = imgWidth;
+            this.imgHeight = imgHeight;
+
             var modal = document.querySelector('.modal');
             var imgModal = modal.childNodes[0];
             imgModal.style.width = `${imgWidth}px`;
@@ -94,6 +104,7 @@ export default {
             var app = document.querySelector('#app');
             modal.style.display = 'none';
             app.removeAttribute('style');
+            window.scrollTo(0, this.currentPos);
         }
     },
     created() {
@@ -118,6 +129,14 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+    &-info {
+        position: absolute;
+        top: 0;
+        left: 0;            
+        p {
+            margin: 1rem;
+        }
     }
 }
 img {
