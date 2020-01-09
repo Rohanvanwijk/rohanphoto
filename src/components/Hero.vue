@@ -3,7 +3,11 @@
         <h1 class="page-title">{{ HeroTitle }}</h1>
         <h2>{{ feature[0].title }}</h2>
         <router-link to="/blogs" class="enter-website">Enter website</router-link>
+<<<<<<< HEAD
         <img src="../assets/images/showcase/forest.jpg" alt="Image" class="img"/>
+=======
+        <img :src="heroImage" alt="Hero image" class="img"/>
+>>>>>>> master
         <MetaData />
     </div>
 </template>
@@ -19,7 +23,15 @@ export default {
     props: {
         HeroTitle: String
     },
+<<<<<<< HEAD
     computed: mapGetters(['feature']),
+=======
+    computed: {
+        heroImage: function() {
+            return require('../assets/hero.jpg');
+        }
+    }
+>>>>>>> master
 }
 </script>
 <style lang="scss" scoped>

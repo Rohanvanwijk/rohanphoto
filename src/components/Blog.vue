@@ -9,14 +9,20 @@
             <div v-for="photo in blog.images" :key="photo.title" class="img-container">
                 <div v-if="photo.full" class="img img--full">
                     <div v-for="source in photo.src" :key="source" class="img--full__item">
-                        <img :src="getPath(source)" alt="img full" @click="goTo($event)" />
+                        <img :src="getPath(source)" alt="img full" @click="ShowModal($event)" />
                     </div>
                 </div>
                 <div v-else class="img img--half">
                     <div v-for="source in photo.src" :key="source" class="img--half__item">
-                        <img :src="getPath(source)" alt="half" @click="goTo($event)" />
+                        <img :src="getPath(source)" alt="half" @click="ShowModal($event)" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="modal" @click="DismisModal($event)">
+            <img class="modal-image" :src="showFullSrc" alt="modalimage">
+            <div class="modal-info">
+                <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
             </div>
         </div>
     </div>
@@ -27,7 +33,11 @@ export default {
     name: 'Blog',
     data: function() {
         return {
-            isShowedUp: false
+            isShowedUp: false,
+            showFullSrc: '',
+            currentPos: 0,
+            imgWidth: 0,
+            imgHeight: 0
         }
     },
     computed: {
@@ -39,7 +49,7 @@ export default {
     },
     methods: {
         getPath: function(pic) {
-            return require('@/assets/images/' + pic)
+            return `https://docs.google.com/uc?id=${pic}`;
         },
         scrollToTop: function() {
             window.scrollTo({
@@ -50,16 +60,48 @@ export default {
         },
         handleScroll: function() {
             const x = window.scrollY;
+            this.currentPos = x;
             if(x > 600){
                 this.isShowedUp = true;
             } else {
                 this.isShowedUp = false;
             }
         },
-        goTo: function(event) {
-            const pos = event.currentTarget;
-            pos.scrollIntoView();
-            window.scrollBy(0, -80);
+        ShowModal: function(event) {
+            /* eslint-disable no-console */
+            this.showFullSrc = event.path[0].currentSrc;
+            var viewPortWidth = window.innerWidth;
+            var viewPortHeight = window.innerHeight;
+            var imgWidth = event.path[0].clientWidth;
+            var imgHeight = event.path[0].clientHeight;
+
+            this.imgWidth = imgWidth;
+            this.imgHeight = imgHeight;
+
+            var modal = document.querySelector('.modal');
+            var imgModal = modal.childNodes[0];
+            imgModal.style.width = `${imgWidth}px`;
+            imgModal.style.height = `${imgHeight}px`;
+            modal.style.display = 'block';
+            
+            // body fixed
+            var app = document.querySelector('#app');
+            app.style.position = 'fixed';
+         
+            if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
+                imgModal.style.width = 'unset';
+                imgModal.style.height = '100%';
+            }
+        },
+        DismisModal: function(event) {
+            if (event.target.className == 'modal-image') {
+                return
+            }
+            var modal = document.querySelector('.modal');
+            var app = document.querySelector('#app');
+            modal.removeAttribute('style');
+            app.removeAttribute('style');
+            window.scrollTo(0, this.currentPos);
         }
     },
     created() {
@@ -71,6 +113,29 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    &-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;            
+        p {
+            margin: 1rem;
+        }
+    }
+}
 img {
     width: 100%;
 }

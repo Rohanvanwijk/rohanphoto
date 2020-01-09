@@ -46,7 +46,7 @@ body {
 
 .router-anim-enter-active {
   animation: coming 1s;
-  animation-delay: .5s;
+  animation-delay: 1.5s;
   opacity: 0;
 }
 

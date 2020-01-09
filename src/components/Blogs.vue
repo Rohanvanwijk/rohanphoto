@@ -3,7 +3,7 @@
     <h1 class="blogs__title">My photographs</h1>
     <div class="blogs__container">
       <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
-        <img :src="getPath(blog.images[0].src[1])" alt="photo" />
+        <img :src="getPath(blog.images[0].src[0])" alt="photo" />
         <router-link
           :to="{ name: 'blog', params: { title: blog.title } }"
           class="blog-link"
@@ -22,7 +22,7 @@ export default {
     computed: mapGetters(['allBlogs']),
     methods: {
         getPath: function(pic) {
-            return require('@/assets/images/'+pic)
+            return `https://docs.google.com/uc?id=${pic}`;
         }
     }
 }
