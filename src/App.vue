@@ -14,11 +14,14 @@ export default {
 </script>
 
 <style lang="scss">
-//variables
+@import './theme/global.scss';
+
+// Variables
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-xl: 992px;
 $screen-lg: 1200px;
+
 
 html {
   font-size: 62.5%;
@@ -38,6 +41,7 @@ body {
   max-width: 99rem;
   margin: 0 auto;
   padding: 0 2rem;
+  transition: transform .25s ease-in;
   @media only screen and (min-width: $screen-xl) {
     padding: 0;
     

@@ -1,28 +1,43 @@
 <template>
-  <div class="blogs container">
-    <h1 class="blogs__title">My photographs</h1>
-    <div class="blogs__container">
-      <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
-        <img :src="getPath(blog.images[0].src[0])" alt="photo" />
-        <router-link
-          :to="{ name: 'blog', params: { title: blog.title } }"
-          class="blog-link"
-          pageTitle="blog.title"
-        >{{ blog.title }}</router-link>
-        <span class="blogs__date">{{ blog.date }}</span>
+  <div>
+    <HeaderMain v-on:childToParent="slideUpToggle"  />
+    <div class="container" :class="moveUp ? 'moveUp' : ''">
+      <h1 class="blogs__title">My photographs</h1>
+      <div class="blogs__container">
+        <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
+          <img :src="getPath(blog.images[0].src[0])" alt="photo" />
+          <router-link
+            :to="{ name: 'blog', params: { title: blog.title } }"
+            class="blog-link"
+            pageTitle="blog.title"
+          >{{ blog.title }}</router-link>
+          <span class="blogs__date">{{ blog.date }}</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import HeaderMain from './Header.vue';
 
 export default {
     name: 'Blogs',
     computed: mapGetters(['allBlogs']),
+    components: {
+      HeaderMain
+    },
+    data: function() {
+      return {
+        moveUp: false,
+      }
+    },
     methods: {
         getPath: function(pic) {
             return `https://docs.google.com/uc?id=${pic}`;
+        },
+        slideUpToggle: function() {
+          this.moveUp = !this.moveUp;
         }
     }
 }
@@ -35,11 +50,6 @@ $screen-xl: 992px;
 $screen-lg: 1200px;
 
 .blogs {
-  padding: 0 1rem;
-  margin-top: 8rem;
-  @media only screen and (min-width: $screen-md) {
-    padding: 0;
-  }
   &__title {
     margin-bottom: 4rem;
     font-variant: small-caps;
@@ -55,23 +65,19 @@ $screen-lg: 1200px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
   }
   &__item {
-    flex-basis: 33.33%;
+    flex-basis: 30%;
     position: relative;
     overflow: hidden;
-    margin-right: 1rem;
     max-height: 20rem;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    &:nth-child(even) {
-      margin-right: 0;
-    }
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
@@ -91,5 +97,8 @@ $screen-lg: 1200px;
   font-weight: bold;
   text-decoration: none;
   color: black;
+}
+.moveUp {
+  transform: translateY(-30px);
 }
 </style>
