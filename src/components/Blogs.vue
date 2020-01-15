@@ -1,6 +1,11 @@
 <template>
   <div>
     <HeaderMain v-on:childToParent="slideUpToggle"  />
+    <div class="banner container">
+      <a href="https://partner.bol.com/click/click?p=1&amp;t=url&amp;s=1041774&amp;url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fcomputer%2F&amp;f=BAN&amp;name=Computer&amp;subid=" target="_blank"><img src="https://www.bol.com/nl/upload/partnerprogramma/190605-computer-pp-300x250.jpg" width="300" height="250" alt="Computer"  /></a><img src="https://partner.bol.com/click/impression?p=1&amp;s=1041774&amp;t=url&amp;f=BAN&amp;name=Computer&amp;subid=" width="1" height="1" alt="Computer"/>
+      <a href="https://partner.bol.com/click/click?p=1&amp;t=url&amp;s=1041774&amp;url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fl%2Fstudieboeken%2FN%2F8299%2B4273962347%2F&amp;f=BAN&amp;name=Studentenleven&amp;subid=" target="_blank"><img src="https://www.bol.com/nl/upload/partnerprogramma/302828_studentenleven_pp-500x500.jpg" width="300" height="300" alt="Studentenleven"  /></a><img src="https://partner.bol.com/click/impression?p=1&amp;s=1041774&amp;t=url&amp;f=BAN&amp;name=Studentenleven&amp;subid=" width="1" height="1" alt="Studentenleven"/>
+      <a href="https://partner.bol.com/click/click?p=1&amp;t=url&amp;s=1041774&amp;url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fm%2Fsale-solden%2F&amp;f=BAN&amp;name=Sale%20(NL)&amp;subid=" target="_blank"><img src="https://www.bol.com/nl/upload/partnerprogramma/30558_SALE_pp-300x250.jpg" width="300" height="250" alt="Sale (NL)"  /></a><img src="https://partner.bol.com/click/impression?p=1&amp;s=1041774&amp;t=url&amp;f=BAN&amp;name=Sale%20(NL)&amp;subid=" width="1" height="1" alt="Sale (NL)"/>
+    </div>
     <div class="container" :class="moveUp ? 'moveUp' : ''">
       <h1 class="blogs__title">My photographs</h1>
       <div class="blogs__container">
@@ -101,4 +106,12 @@ $screen-lg: 1200px;
 .moveUp {
   transform: translateY(-30px);
 }
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @media only screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+  }
 </style>
