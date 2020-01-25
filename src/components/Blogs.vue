@@ -4,18 +4,13 @@
     <div class="container" :class="moveUp ? 'moveUp' : ''">
       <h1 class="blogs__title">My photographs</h1>
       <div class="blogs__container">
-        <div
-          v-for="blog in allBlogs"
-          v-bind:key="blog.title"
-          class="blogs__item"
-        >
+        <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
           <img :src="getPath(blog.images[0].src[0])" alt="photo" />
           <router-link
             :to="{ name: 'blog', params: { title: blog.title } }"
             class="blog-link"
             pageTitle="blog.title"
-            >{{ blog.title }}</router-link
-          >
+          >{{ blog.title }}</router-link>
           <span class="blogs__date">{{ blog.date }}</span>
         </div>
       </div>
