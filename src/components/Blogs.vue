@@ -1,16 +1,21 @@
 <template>
   <div>
-    <HeaderMain v-on:childToParent="slideUpToggle"  />
+    <HeaderMain v-on:childToParent="slideUpToggle" />
     <div class="container" :class="moveUp ? 'moveUp' : ''">
       <h1 class="blogs__title">My photographs</h1>
       <div class="blogs__container">
-        <div v-for="blog in allBlogs" v-bind:key="blog.title" class="blogs__item">
+        <div
+          v-for="blog in allBlogs"
+          v-bind:key="blog.title"
+          class="blogs__item"
+        >
           <img :src="getPath(blog.images[0].src[0])" alt="photo" />
           <router-link
             :to="{ name: 'blog', params: { title: blog.title } }"
             class="blog-link"
             pageTitle="blog.title"
-          >{{ blog.title }}</router-link>
+            >{{ blog.title }}</router-link
+          >
           <span class="blogs__date">{{ blog.date }}</span>
         </div>
       </div>
@@ -18,29 +23,29 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
-import HeaderMain from './Header.vue';
+import { mapGetters } from "vuex";
+import HeaderMain from "./Header.vue";
 
 export default {
-    name: 'Blogs',
-    computed: mapGetters(['allBlogs']),
-    components: {
-      HeaderMain
+  name: "Blogs",
+  computed: mapGetters(["allBlogs"]),
+  components: {
+    HeaderMain
+  },
+  data: function() {
+    return {
+      moveUp: false
+    };
+  },
+  methods: {
+    getPath: function(pic) {
+      return `https://docs.google.com/uc?id=${pic}`;
     },
-    data: function() {
-      return {
-        moveUp: false,
-      }
-    },
-    methods: {
-        getPath: function(pic) {
-            return `https://docs.google.com/uc?id=${pic}`;
-        },
-        slideUpToggle: function() {
-          this.moveUp = !this.moveUp;
-        }
+    slideUpToggle: function() {
+      this.moveUp = !this.moveUp;
     }
-}
+  }
+};
 </script>
 <style lang="scss" scroped>
 //variables
