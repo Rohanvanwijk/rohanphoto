@@ -1,41 +1,19 @@
 <template>
   <div class="blog container">
-    <div
-      class="floating scrollup"
-      @click="scrollToTop()"
-      :class="{ show: isShowedUp }"
-    >
-      Up
-    </div>
+    <div class="floating scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
     <router-link to="/blogs" class="backpage">Back to blogs</router-link>
     <h1 class="blog__title">{{ blog.title }}</h1>
     <div class="blog__date">{{ blog.date }}</div>
     <div class="blog__intro">{{ blog.intro }}</div>
     <div class="blog__photos">
-      <div
-        v-for="photo in blog.images"
-        :key="photo.title"
-        class="img-container"
-      >
+      <div v-for="photo in blog.images" :key="photo.title" class="img-container">
         <div v-if="photo.full" class="img img--full">
-          <div
-            v-for="source in photo.src"
-            :key="source"
-            class="img--full__item"
-          >
-            <img
-              :src="getPath(source)"
-              alt="img full"
-              @click="ShowModal($event)"
-            />
+          <div v-for="source in photo.src" :key="source" class="img--full__item">
+            <img :src="getPath(source)" alt="img full" @click="ShowModal($event)" />
           </div>
         </div>
         <div v-else class="img img--half">
-          <div
-            v-for="source in photo.src"
-            :key="source"
-            class="img--half__item"
-          >
+          <div v-for="source in photo.src" :key="source" class="img--half__item">
             <img :src="getPath(source)" alt="half" @click="ShowModal($event)" />
           </div>
         </div>
@@ -93,8 +71,8 @@ export default {
       this.showFullSrc = event.path[0].currentSrc;
       var viewPortWidth = window.innerWidth;
       var viewPortHeight = window.innerHeight;
-      var imgWidth = event.path[0].clientWidth;
-      var imgHeight = event.path[0].clientHeight;
+      var imgWidth = event.path[0].naturalWidth;
+      var imgHeight = event.path[0].naturalHeight;
 
       this.imgWidth = imgWidth;
       this.imgHeight = imgHeight;
@@ -105,9 +83,6 @@ export default {
       imgModal.style.height = `${imgHeight}px`;
       modal.style.display = "block";
 
-      // body fixed
-      var app = document.querySelector("#app");
-      app.style.position = "fixed";
       if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
         imgModal.style.width = "unset";
         imgModal.style.height = "100%";
@@ -118,9 +93,7 @@ export default {
         return;
       }
       var modal = document.querySelector(".modal");
-      var app = document.querySelector("#app");
       modal.removeAttribute("style");
-      app.removeAttribute("style");
       window.scrollTo(0, this.currentPos);
     }
   },
@@ -135,12 +108,12 @@ export default {
 <style lang="scss" scoped>
 .modal {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: white;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   &-image {
     position: absolute;
     top: 50%;
