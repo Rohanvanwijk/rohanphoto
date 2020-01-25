@@ -7,22 +7,13 @@
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-}
+  name: "app"
+};
 </script>
 
 <style lang="scss">
-@import './theme/global.scss';
-
-// Variables
-$screen-sm: 576px;
-$screen-md: 768px;
-$screen-xl: 992px;
-$screen-lg: 1200px;
-
-
+@import "./theme/global.scss";
 html {
   font-size: 62.5%;
   margin: 0;
@@ -32,7 +23,7 @@ body {
   font-size: 1.6rem;
   margin: 0;
   padding: 0;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,10 +32,9 @@ body {
   max-width: 99rem;
   margin: 0 auto;
   padding: 0 2rem;
-  transition: transform .25s ease-in;
+  transition: transform 0.25s ease-in;
   @media only screen and (min-width: $screen-xl) {
     padding: 0;
-    
   }
 }
 
@@ -77,6 +67,5 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
-  
 }
 </style>
