@@ -1,5 +1,6 @@
 <template>
   <div class="blog container">
+    <HeaderMain />
     <div class="floating scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
     <router-link to="/blogs" class="backpage">Back to blogs</router-link>
     <h1 class="blog__title">{{ blog.title }}</h1>
@@ -28,8 +29,12 @@
   </div>
 </template>
 <script>
+import HeaderMain from './Header.vue';
 export default {
   name: "Blog",
+  components: {
+    HeaderMain,
+  },
   data: function() {
     return {
       isShowedUp: false,

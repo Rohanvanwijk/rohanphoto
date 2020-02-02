@@ -4,11 +4,17 @@
       <router-link to="/" class="header__title">Rohan Photo</router-link>
       <span class="menu">About me</span>
     </div>
+    <Aboutme />
   </header>
 </template>
 <script>
+import Aboutme from './aboutme.vue';
+
 export default {
-  name: "Header"
+  name: "Header",
+  components: {
+    Aboutme,
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -32,5 +38,8 @@ export default {
   &:hover {
     cursor: pointer;
   }
+}
+.bg-beige {
+  background-color: $color-beige;
 }
 </style>
