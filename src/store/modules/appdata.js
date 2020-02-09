@@ -8,7 +8,11 @@ const getters = {
 
 const actions = {};
 
-const mutations = {};
+const mutations = {
+  toggle(state) {
+    state.showAboutMe = !state.showAboutMe;
+  }
+};
 
 export default {
     state,

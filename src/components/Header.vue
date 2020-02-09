@@ -2,9 +2,9 @@
   <header class="header">
     <div class="container header__container">
       <router-link to="/" class="header__title">Rohan Photo</router-link>
-      <span class="menu">About me</span>
+      <span class="menu" @click="showAboutMe = !showAboutMe">About me</span>
     </div>
-    <Aboutme />
+    <Aboutme v-if="showAboutMe"></Aboutme>
   </header>
 </template>
 <script>
@@ -14,6 +14,11 @@ export default {
   name: "Header",
   components: {
     Aboutme,
+  },
+  data: function() {
+    return {
+      showAboutMe: true,
+    }
   },
 };
 </script>

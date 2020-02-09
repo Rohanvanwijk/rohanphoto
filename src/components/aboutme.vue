@@ -2,7 +2,7 @@
   <div class="container">
     <div class="aboutme">
       <h1>About me</h1>
-      <p>hoi test me ik i;llll</p>
+      <p>Hello, I am Rohan.</p>
     </div>
   </div>
 </template>
