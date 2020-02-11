@@ -1,12 +1,12 @@
 <template>
- <div class="meta-data" @click="isExpanded" :class="{ expanded: isExpanded }">
+ <div class="meta-data">
     <div v-for="(item, key) in metadata" v-bind:key="item" class="meta-data__line">
         <span class="label">{{ key }} </span><span class="value">{{ item }}</span>
     </div>
-    
-            
+
+
 </div>
-    
+
 </template>
 <script>
 export default {
@@ -14,21 +14,9 @@ export default {
     data: function() {
         return {
             metadata: {
-                Location: 't Koningshof',
-                Camera: 'Canon 5D mark IV',
-                Lens: 'Canon EF 16-35mm f/4.0L IS USM',
-                'Shutter speed': '1/100',
-                Fstop: 'f/4',
-                ISO: 4000
+                Location: 'Dolomites, Italy',
+                Camera: 'DJI Mavick Pro'
             },
-            isExpanded: false
-        }
-    },
-    methods: function() {
-        return {
-            toggleExpand: function() {
-                this.isExpanded = !this.isExpanded;
-            }
         }
     },
 }
