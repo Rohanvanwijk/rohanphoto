@@ -65,7 +65,6 @@ $screen-lg: 1200px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-between;
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
@@ -77,7 +76,7 @@ $screen-lg: 1200px;
     max-height: 20rem;
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin: 1rem;
     @media only screen and (min-width: $screen-md) {
       flex-direction: row;
     }
