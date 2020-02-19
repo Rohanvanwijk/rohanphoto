@@ -117,8 +117,8 @@
     ]
   },
   {
-    "title": "Honden portretten",
-    "intro": "Verzameling honden foto's.",
+    "title": "portretten honden",
+    "intro": "Verzameling honden foto's (Pepper en Jimmy).",
     "date": "Divers 2018 - heden",
     "images": [
       {
@@ -137,5 +137,84 @@
         "src": ["1UZoRtfru-HnwTSsY0yJWpvcqVd2fTJZ_"]
       }
     ]
-  }
+  },
+  {
+    "title": "Portretten kat",
+    "intro": "Verzameling foto's van onze kat Lizzy.",
+    "date": "Divers 2018 - heden",
+    "images": [
+      {
+        "full": true,
+        "src": ["1jtiS6d1qmL-Pgu4nVQk-Tace0zaEV7-9"]
+      },
+      {
+        "full": false,
+        "src": [
+          "1kxm5xwxDmT1xnpfpsJC564qdUT51J-F9",
+          "1rsY494B-FKv0IKdKXKkJi3tP6fHN4mN9"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Stedentrip Parijs",
+    "intro": "Een dag in Parijs met familie. Geschoten met Canon EOS 400D (2006) en 18-55mm lens.",
+    "date": "Augustus 2019",
+    "images": [
+        {
+            "full": true,
+            "src": ["1O_bgNarLmvr3udHEVJRtm-9eizIWnlVz"]
+        },
+        {
+            "full": false,
+            "src": [
+                "1GZ2jOwJyJ77Au4YIBmvHm2YvutuOQQhw",
+                "1awlJiEj68m4jHEd1YtLuMSTI7lZjvG3-"
+            ]
+        },
+        {
+          "full": false,
+          "src": [
+            "1oGNeAdgUSGKXUdMaBh5hiriz2eI-59lY",
+            "1egknv2_69Hy4IL04AJ_A7NPWnbEhls3z"
+          ]
+        },
+        {
+          "full": true,
+          "src": ["1MhPWxT_jK46EIkyEt5xLCtmFtNPF_aMh"]
+        },
+        {
+          "full": false,
+          "src": [
+            "1s-dmgn-JIhzkktG7khWKr5roJBZ-0Qvg",
+            "1Redcy7rfsq-AamQX1hlgLfUvEv1iIXlq"
+          ]
+        },
+        {
+          "full": false,
+          "src": [
+            "1heMB4U3jHTJhM09BP1pjvhilH0Av33eX",
+            "1YN1kNgPXinIfRrUDOF1UsK9FhkN0Mtk3"
+          ]
+        },
+        {
+          "full": false,
+          "src": [
+            "1GzWFk9uiEH14zHT94bAJvHxkCnifKuiZ",
+            "1I-_sz4xsVGLRm8sZmFgdo65_Gnblq9XE"
+          ]
+        },
+        {
+          "full": true,
+          "src": ["1gPUbNLVmoyFLhzMM6sD55iBMau6-y5rM"]
+        },
+        {
+          "full": false,
+          "src": [
+            "1LSKObl2PhQuTHpvMLXvzNbczhERYQw0_",
+            "1Zglu-F1_07urPCmMMMu_UrErvS3wilm-"
+          ]
+        }
+    ]
+}
 ]

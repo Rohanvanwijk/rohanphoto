@@ -19,8 +19,16 @@
         </div>
       </div>
     </div>
-    <div class="modal" @click="DismisModal($event)">
-      <img class="modal-image" :src="showFullSrc" alt="modalimage" />
+    <div
+    @click="DismisModal($event)"
+    :class="[
+    'modal',
+    showModal ? 'showModal' : ''
+    ]">
+      <img
+      class="modal-image"
+      :src="showFullSrc ? showFullSrc : 'pepper'"
+      alt="modalimage" />
       <div class="modal-info">
         <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
       </div>
@@ -36,7 +44,8 @@ export default {
       showFullSrc: "",
       currentPos: 0,
       imgWidth: 0,
-      imgHeight: 0
+      imgHeight: 0,
+      showModal: false
     };
   },
   computed: {
@@ -81,12 +90,12 @@ export default {
       var imgModal = modal.childNodes[0];
       imgModal.style.width = `${imgWidth}px`;
       imgModal.style.height = `${imgHeight}px`;
-      modal.style.display = "block";
 
       if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
         imgModal.style.width = "unset";
         imgModal.style.height = "100%";
       }
+      this.showModal = true;
     },
     DismisModal: function(event) {
       if (event.target.className == "modal-image") {
@@ -95,6 +104,7 @@ export default {
       var modal = document.querySelector(".modal");
       modal.removeAttribute("style");
       window.scrollTo(0, this.currentPos);
+      this.showModal = false;
     }
   },
   created() {
@@ -107,18 +117,21 @@ export default {
 </script>
 <style lang="scss" scoped>
 .modal {
-  display: none;
+  opacity: 0;
+  display: flex;
   position: fixed;
-  top: 0;
-  left: 0;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  transition: opacity .1s ease-in;
   &-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: scale(.5) translateY(50vh);
+    transition: transform .2s;
   }
   &-info {
     position: absolute;
@@ -198,7 +211,11 @@ img {
     color: black;
   }
 }
-.show {
+.showModal {
+  z-index: 1;
   opacity: 1;
+  .modal-image {
+    transform: scale(1) translateY(0);
+  }
 }
 </style>
