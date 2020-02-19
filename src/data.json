@@ -117,8 +117,8 @@
     ]
   },
   {
-    "title": "Honden portretten",
-    "intro": "Verzameling honden foto's.",
+    "title": "portretten honden",
+    "intro": "Verzameling honden foto's (Pepper en Jimmy).",
     "date": "Divers 2018 - heden",
     "images": [
       {
@@ -135,6 +135,24 @@
       {
         "full": true,
         "src": ["1UZoRtfru-HnwTSsY0yJWpvcqVd2fTJZ_"]
+      }
+    ]
+  },
+  {
+    "title": "Portretten kat",
+    "intro": "Verzameling foto's van onze kat Lizzy.",
+    "date": "Divers 2018 - heden",
+    "images": [
+      {
+        "full": true,
+        "src": ["1jtiS6d1qmL-Pgu4nVQk-Tace0zaEV7-9"]
+      },
+      {
+        "full": false,
+        "src": [
+          "1kxm5xwxDmT1xnpfpsJC564qdUT51J-F9",
+          "1rsY494B-FKv0IKdKXKkJi3tP6fHN4mN9"
+        ]
       }
     ]
   }
