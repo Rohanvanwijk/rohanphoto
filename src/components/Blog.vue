@@ -26,12 +26,18 @@
     ]">
       <img
       class="modal-image"
+      :style="`width:${imgWidth};height:${imgHeight}`"
       :src="showFullSrc ? showFullSrc : 'pepper'"
       alt="modalimage" />
       <div class="modal-info">
         <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
       </div>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.175 477.175" class="icon icon--right" xml:space="preserve">
+        <g>
+          <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
+        </g>
+      </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.175 477.175" class="icon icon--left" xml:space="preserve">
         <g>
           <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
         </g>
@@ -45,8 +51,8 @@ export default {
   data: function() {
     return {
       showFullSrc: "",
-      imgWidth: 0,
-      imgHeight: 0,
+      imgWidth: '',
+      imgHeight: '',
       showModal: false,
     };
   },
@@ -69,17 +75,12 @@ export default {
       var imgWidth = event.path[0].naturalWidth;
       var imgHeight = event.path[0].naturalHeight;
 
-      this.imgWidth = imgWidth;
-      this.imgHeight = imgHeight;
-
-      var modal = document.querySelector(".modal");
-      var imgModal = modal.childNodes[0];
-      imgModal.style.width = `${imgWidth}px`;
-      imgModal.style.height = `${imgHeight}px`;
-
       if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
-        imgModal.style.width = "unset";
-        imgModal.style.height = "100%";
+        this.imgWidth = '100%';
+        this.imgHeight = 'auto';
+      } else {
+        this.imgWidth = `${imgWidth}px`;
+        this.imgHeight = `${imgHeight}px`;
       }
       this.showModal = true;
     },
@@ -87,9 +88,6 @@ export default {
       if (event.target.className == "modal-image") {
         return;
       }
-      var modal = document.querySelector(".modal");
-      modal.removeAttribute("style");
-      window.scrollTo(0, this.currentPos);
       this.showModal = false;
     }
   },
@@ -187,7 +185,15 @@ img {
 .icon {
   width: 8vw;
   height: 8vw;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
   &--right {
+    right: 1vw;
+  }
+  &--left {
+    left: 1vw;
+    transform: rotate(180deg);
   }
 }
 </style>
