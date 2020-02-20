@@ -5,7 +5,7 @@
     <div class="blog__date">{{ blog.date }}</div>
     <div class="blog__intro">{{ blog.intro }}</div>
     <div class="blog__photos">
-      <div v-for="photo in blog.images" :key="photo.title" class="img-container" @mouseover="animate($event)">
+      <div v-for="photo in blog.images" :key="photo.title" class="img-container">
         <div v-if="photo.full" class="img img--full">
           <div v-for="source in photo.src" :key="source" class="img--full__item">
             <img :src="getPath(source)" alt="img full" @click="ShowModal($event)" />
@@ -30,18 +30,13 @@
       :src="showFullSrc ? showFullSrc : 'pepper'"
       alt="modalimage" />
       <div class="modal-info">
-        <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
+        <p>{{ imgWidth }} x {{ imgHeight }}</p>
       </div>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.175 477.175" class="icon icon--right" xml:space="preserve">
-        <g>
-          <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
-        </g>
-      </svg>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.175 477.175" class="icon icon--left" xml:space="preserve">
-        <g>
-          <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
-        </g>
-      </svg>
+      <div class="thumbnails">
+        <div v-for="(item, index) in imgArray" :key="index" class="thumbnails__container">
+          <img :src="getPath(item)" class="thumbnails__image">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,9 +46,11 @@ export default {
   data: function() {
     return {
       showFullSrc: "",
+      imgArray: [],
       imgWidth: '',
       imgHeight: '',
       showModal: false,
+      modalIndex: 0
     };
   },
   computed: {
@@ -83,12 +80,31 @@ export default {
         this.imgHeight = `${imgHeight}px`;
       }
       this.showModal = true;
+      this.blog.images.forEach((item) => {
+        item.src.forEach((item) => {
+          this.imgArray.push(item);
+        });
+
+      });
+
     },
     DismisModal: function(event) {
-      if (event.target.className == "modal-image") {
+      if (event.target.className == 'modal-image' || event.toElement.tagName == 'svg') {
         return;
       }
       this.showModal = false;
+      this.imgArray = [];
+    },
+    changeImage(event, next) {
+      this.modalIndex++;
+      const img = this.imgArray[this.modalIndex];
+      this.showFullSrc = `https://docs.google.com/uc?id=${img}`;
+      console.log(next);
+      const width = event.path[1].firstElementChild.width;
+      const height = event.path[1].firstElementChild.height;
+      this.imgWidth = `${width}px`;
+      this.imgHeight = `${height}px`;
+      console.log(event);
     }
   },
 };
@@ -194,6 +210,24 @@ img {
   &--left {
     left: 1vw;
     transform: rotate(180deg);
+  }
+}
+.thumbnails {
+  max-height: 100vh;
+  &__container {
+    margin: 1rem 0;
+    margin-left: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__image {
+    height: 6rem;
+    width: 10rem;
+    object-fit: cover;
   }
 }
 </style>
