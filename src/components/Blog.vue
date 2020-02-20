@@ -1,12 +1,11 @@
 <template>
   <div class="blog container">
-    <div class="floating scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
     <router-link to="/blogs" class="backpage">Back to blogs</router-link>
     <h1 class="blog__title">{{ blog.title }}</h1>
     <div class="blog__date">{{ blog.date }}</div>
     <div class="blog__intro">{{ blog.intro }}</div>
     <div class="blog__photos">
-      <div v-for="photo in blog.images" :key="photo.title" class="img-container">
+      <div v-for="photo in blog.images" :key="photo.title" class="img-container" @mouseover="animate($event)">
         <div v-if="photo.full" class="img img--full">
           <div v-for="source in photo.src" :key="source" class="img--full__item">
             <img :src="getPath(source)" alt="img full" @click="ShowModal($event)" />
@@ -32,6 +31,11 @@
       <div class="modal-info">
         <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
       </div>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.175 477.175" class="icon icon--right" xml:space="preserve">
+        <g>
+          <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
+        </g>
+      </svg>
     </div>
   </div>
 </template>
@@ -40,12 +44,10 @@ export default {
   name: "Blog",
   data: function() {
     return {
-      isShowedUp: false,
       showFullSrc: "",
-      currentPos: 0,
       imgWidth: 0,
       imgHeight: 0,
-      showModal: false
+      showModal: false,
     };
   },
   computed: {
@@ -58,22 +60,6 @@ export default {
   methods: {
     getPath: function(pic) {
       return `https://docs.google.com/uc?id=${pic}`;
-    },
-    scrollToTop: function() {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
-    },
-    handleScroll: function() {
-      const x = window.scrollY;
-      this.currentPos = x;
-      if (x > 600) {
-        this.isShowedUp = true;
-      } else {
-        this.isShowedUp = false;
-      }
     },
     ShowModal: function(event) {
       /* eslint-disable no-console */
@@ -107,12 +93,6 @@ export default {
       this.showModal = false;
     }
   },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -186,20 +166,6 @@ img {
 .mt-2 {
   margin: 2rem 0;
 }
-.floating {
-  opacity: 0;
-  transition: opacity 1s;
-  position: fixed;
-  padding: 2rem;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 1px 1px 3px black;
-  background-color: white;
-}
-.scrollup {
-  bottom: 2rem;
-  right: 2rem;
-}
 .backpage {
   position: fixed;
   cursor: pointer;
@@ -216,6 +182,12 @@ img {
   opacity: 1;
   .modal-image {
     transform: scale(1) translateY(0);
+  }
+}
+.icon {
+  width: 8vw;
+  height: 8vw;
+  &--right {
   }
 }
 </style>
