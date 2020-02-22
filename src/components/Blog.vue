@@ -34,7 +34,7 @@
       </div>
       <div class="thumbnails">
         <div v-for="(item, index) in imgArray" :key="index" class="thumbnails__container">
-          <img :src="getPath(item)" class="thumbnails__image">
+          <img :src="getPath(item)" class="thumbnails__image" @click="changeImage($event)">
         </div>
       </div>
     </div>
@@ -49,8 +49,7 @@ export default {
       imgArray: [],
       imgWidth: '',
       imgHeight: '',
-      showModal: false,
-      modalIndex: 0
+      showModal: false
     };
   },
   computed: {
@@ -73,8 +72,8 @@ export default {
       var imgHeight = event.path[0].naturalHeight;
 
       if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
-        this.imgWidth = '100%';
-        this.imgHeight = 'auto';
+        this.imgWidth = 'auto';
+        this.imgHeight = '100%';
       } else {
         this.imgWidth = `${imgWidth}px`;
         this.imgHeight = `${imgHeight}px`;
@@ -89,22 +88,27 @@ export default {
 
     },
     DismisModal: function(event) {
-      if (event.target.className == 'modal-image' || event.toElement.tagName == 'svg') {
+      if (event.target.className == 'modal-image' || event.target.classList.value == 'thumbnails__image') {
         return;
       }
       this.showModal = false;
       this.imgArray = [];
     },
-    changeImage(event, next) {
-      this.modalIndex++;
-      const img = this.imgArray[this.modalIndex];
-      this.showFullSrc = `https://docs.google.com/uc?id=${img}`;
-      console.log(next);
-      const width = event.path[1].firstElementChild.width;
-      const height = event.path[1].firstElementChild.height;
-      this.imgWidth = `${width}px`;
-      this.imgHeight = `${height}px`;
+    changeImage(event) {
+      this.showFullSrc = event.target.src;
+      const width = event.target.naturalWidth;
+      const height = event.target.naturalHeight;
+      const viewPortHeight = window.innerHeight;
+      const viewPortWidth = window.innerWidth;
+      if (width > viewPortWidth) {
+        this.imgWidth = 'inherit';
+      } else { this.imgWidth = `${width}px`; }
+      if (height > viewPortHeight) {
+        this.imgHeight = 'auto';
+      } else { this.imgHeight = `${height}px`; }
+      console.log(`w:${width},h:${height}`);
       console.log(event);
+      
     }
   },
 };
@@ -125,7 +129,7 @@ export default {
   transition: opacity .1s ease-in;
   &-image {
     transform: scale(.5) translateY(50vh);
-    transition: transform .2s;
+    transition: all .2s;
   }
   &-info {
     position: absolute;
@@ -228,6 +232,7 @@ img {
     height: 6rem;
     width: 10rem;
     object-fit: cover;
+    cursor: pointer;
   }
 }
 </style>
