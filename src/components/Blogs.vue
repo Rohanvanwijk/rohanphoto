@@ -67,7 +67,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scroped>
+<style lang="scss">
 //variables
 $screen-sm: 576px;
 $screen-md: 768px;

@@ -1,6 +1,5 @@
 <template>
   <div class="blog container">
-    <div class="floating scrollup" @click="scrollToTop()" :class="{ show: isShowedUp }">Up</div>
     <router-link to="/blogs" class="backpage">Back to blogs</router-link>
     <h1 class="blog__title">{{ blog.title }}</h1>
     <div class="blog__date">{{ blog.date }}</div>
@@ -27,10 +26,16 @@
     ]">
       <img
       class="modal-image"
+      :style="`width:${imgWidth};height:${imgHeight}`"
       :src="showFullSrc ? showFullSrc : 'pepper'"
       alt="modalimage" />
       <div class="modal-info">
-        <p>{{ imgWidth }}px x {{ imgHeight }}px</p>
+        <p>{{ imgWidth }} x {{ imgHeight }}</p>
+      </div>
+      <div class="thumbnails">
+        <div v-for="(item, index) in imgArray" :key="index" class="thumbnails__container">
+          <img :src="getPath(item)" class="thumbnails__image" @click="changeImage($event)">
+        </div>
       </div>
     </div>
   </div>
@@ -40,11 +45,10 @@ export default {
   name: "Blog",
   data: function() {
     return {
-      isShowedUp: false,
       showFullSrc: "",
-      currentPos: 0,
-      imgWidth: 0,
-      imgHeight: 0,
+      imgArray: [],
+      imgWidth: '',
+      imgHeight: '',
       showModal: false
     };
   },
@@ -59,22 +63,6 @@ export default {
     getPath: function(pic) {
       return `https://docs.google.com/uc?id=${pic}`;
     },
-    scrollToTop: function() {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
-    },
-    handleScroll: function() {
-      const x = window.scrollY;
-      this.currentPos = x;
-      if (x > 600) {
-        this.isShowedUp = true;
-      } else {
-        this.isShowedUp = false;
-      }
-    },
     ShowModal: function(event) {
       /* eslint-disable no-console */
       this.showFullSrc = event.path[0].currentSrc;
@@ -83,36 +71,46 @@ export default {
       var imgWidth = event.path[0].naturalWidth;
       var imgHeight = event.path[0].naturalHeight;
 
-      this.imgWidth = imgWidth;
-      this.imgHeight = imgHeight;
-
-      var modal = document.querySelector(".modal");
-      var imgModal = modal.childNodes[0];
-      imgModal.style.width = `${imgWidth}px`;
-      imgModal.style.height = `${imgHeight}px`;
-
       if (imgWidth > viewPortWidth || imgHeight > viewPortHeight) {
-        imgModal.style.width = "unset";
-        imgModal.style.height = "100%";
+        this.imgWidth = 'auto';
+        this.imgHeight = '100%';
+      } else {
+        this.imgWidth = `${imgWidth}px`;
+        this.imgHeight = `${imgHeight}px`;
       }
       this.showModal = true;
+      this.blog.images.forEach((item) => {
+        item.src.forEach((item) => {
+          this.imgArray.push(item);
+        });
+
+      });
+
     },
     DismisModal: function(event) {
-      if (event.target.className == "modal-image") {
+      if (event.target.className == 'modal-image' || event.target.classList.value == 'thumbnails__image') {
         return;
       }
-      var modal = document.querySelector(".modal");
-      modal.removeAttribute("style");
-      window.scrollTo(0, this.currentPos);
       this.showModal = false;
+      this.imgArray = [];
+    },
+    changeImage(event) {
+      this.showFullSrc = event.target.src;
+      const width = event.target.naturalWidth;
+      const height = event.target.naturalHeight;
+      const viewPortHeight = window.innerHeight;
+      const viewPortWidth = window.innerWidth;
+      if (width > viewPortWidth) {
+        this.imgWidth = 'inherit';
+      } else { this.imgWidth = `${width}px`; }
+      if (height > viewPortHeight) {
+        this.imgHeight = 'auto';
+      } else { this.imgHeight = `${height}px`; }
+      console.log(`w:${width},h:${height}`);
+      console.log(event);
+      
     }
   },
-  created() {
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -131,7 +129,7 @@ export default {
   transition: opacity .1s ease-in;
   &-image {
     transform: scale(.5) translateY(50vh);
-    transition: transform .2s;
+    transition: all .2s;
   }
   &-info {
     position: absolute;
@@ -186,20 +184,6 @@ img {
 .mt-2 {
   margin: 2rem 0;
 }
-.floating {
-  opacity: 0;
-  transition: opacity 1s;
-  position: fixed;
-  padding: 2rem;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 1px 1px 3px black;
-  background-color: white;
-}
-.scrollup {
-  bottom: 2rem;
-  right: 2rem;
-}
 .backpage {
   position: fixed;
   cursor: pointer;
@@ -216,6 +200,39 @@ img {
   opacity: 1;
   .modal-image {
     transform: scale(1) translateY(0);
+  }
+}
+.icon {
+  width: 8vw;
+  height: 8vw;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  &--right {
+    right: 1vw;
+  }
+  &--left {
+    left: 1vw;
+    transform: rotate(180deg);
+  }
+}
+.thumbnails {
+  max-height: 100vh;
+  &__container {
+    margin: 1rem 0;
+    margin-left: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__image {
+    height: 6rem;
+    width: 10rem;
+    object-fit: cover;
+    cursor: pointer;
   }
 }
 </style>
