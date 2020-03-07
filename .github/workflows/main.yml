@@ -2,7 +2,7 @@ name: Deployment build
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -13,15 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install lftp
-      run: sudo apt install lftp neofetch; neofetch -L
+      run: sudo apt install lftp
     - name: Install Dependencies
       run: npm install
     - name: Build the app
       run: npm run build
     - name: Deploy app to rohanphoto
-      env: 
+      env:
         host: ${{ secrets.ftp_host }}
         user: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
-      run: lftp -c "set ftp:ssl-allow no; open -u $user,$password $host; mirror --reverse --verbose --delete --exclude-glob .git* --exclude .git/ dist/ ./public_html/rohanphoto; bye"
-        
+      run: lftp -c "set ftp:ssl-allow no; open -u $user,$password $host; mirror --reverse --verbose --delete --exclude-glob .git* --exclude .git/ dist/ ./WWW/rohanphoto; bye"
