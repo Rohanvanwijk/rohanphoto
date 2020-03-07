@@ -18,7 +18,7 @@ jobs:
       run: npm install
     - name: Build the app
       run: npm run build
-    - name: Deploy app to rohanphoto
+    - name: Deploy app to web server
       env:
         host: ${{ secrets.ftp_host }}
         user: ${{ secrets.ftp_user }}
